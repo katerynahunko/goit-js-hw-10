@@ -69,5 +69,3 @@ fetchBreeds()
   .then(breeds => {
     populateBreedsSelect(breeds);
   });
-
-
