@@ -36,7 +36,7 @@ function currentBreed(breeds) {
   });
 }
 
-function updateCatInfo(catData) {
+function createMarkup(catData) {
   catInfoDiv.innerHTML = `
    
   <img src="${catData[0].url}" alt="Cat Image">
@@ -55,7 +55,7 @@ breedSelect.addEventListener('change', () => {
 
   fetchCatByBreed(selectedBreedId)
     .then(catData => {
-      updateCatInfo(catData);
+      createMarkup(catData);
     })
     .finally(() => {
       loader.style.display = 'none';
