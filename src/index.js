@@ -6,8 +6,8 @@ const error = document.querySelector('.error');
 const catInfoDiv = document.querySelector('.cat-info');
 
 function currentBreed(breeds) {
-  breedSelect.style.display = 'none';
-  loader.style.display = 'block';
+  breedSelect.hidden = true;
+  loader.hidden = false;
   breeds.forEach(breed => {
     breedSelect.insertAdjacentHTML(
       'beforeend',
@@ -33,19 +33,21 @@ function createMarkup(catData) {
 breedSelect.addEventListener('change', () => {
   const selectedBreedId = breedSelect.value;
   createMarkup.innerHTML = '';
-  loader.style.display = 'block';
+  breedSelect.hidden = true;
+  loader.hidden = false;
 
   fetchCatByBreed(selectedBreedId)
     .then(catData => {
       createMarkup(catData);
     })
     .finally(() => {
-      loader.style.display = 'none';
+      breedSelect.hidden = false;
+      loader.hidden = true;
     });
 });
 
 fetchBreeds().then(breeds => {
   currentBreed(breeds);
-  breedSelect.style.display = 'block';
-  loader.style.display = 'none';
+  breedSelect.hidden = false;
+  loader.hidden = true;
 });
