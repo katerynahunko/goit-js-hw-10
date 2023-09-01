@@ -14,10 +14,6 @@ img {
   display: none;
 }
 
-.loader {
-  display: none;
-}
-
 .cat-info {
   display: flex;
   flex-direction: row;
